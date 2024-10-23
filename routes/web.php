@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,3 +93,11 @@ Route::prefix('posts')
     });
 
 Route::resource('posts', PostController::class);
+
+Route::
+controller(EmployeeController::class)
+->prefix('employees')
+->group(function (){
+    Route::get('newstaff' , 'NewStaff');
+});
+Route::resource('employees', EmployeeController::class);
